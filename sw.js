@@ -1,5 +1,5 @@
 const cachePrefix = 'statsports-gps-' + self.registration.scope + '-';
-const cacheName = cachePrefix + 'v3';
+const cacheName = cachePrefix + 'v4';
 const appPage = new URL('index.html', self.registration.scope).href;
 const appFiles = [appPage, './manifest.webmanifest', './icons/icon-192.png',
   './icons/icon-512.png', './icons/maskable-512.png', './icons/apple-touch-icon.png'];
