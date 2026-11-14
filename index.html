@@ -505,7 +505,7 @@ app.addEventListener('click', event => {
     case 'home': case 'settings': case 'history': case 'detail': case 'edit': navigate(action); break;
     case 'firstStart': case 'secondStart': start(action); break;
     case 'end': end(); break;
-    case 'next': if (save({...state,active:null})) navigate('home'); break;
+    case 'next': if (save({...state,active:null,match:DEFAULT_MATCH})) navigate('home'); break;
     case 'open': selected = button.dataset.id; navigate('detail'); break;
     case 'editHome':
       if (homeEditing===button.dataset.event) {
