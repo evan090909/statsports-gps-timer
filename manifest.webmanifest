@@ -1,6 +1,6 @@
 {
   "name": "강규현 STATSports GPS 경기 시간 기록기",
-  "short_name": "GPS 경기 시간",
+  "short_name": "강규현 STATSports GPS 경기 시간 기록기",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
