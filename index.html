@@ -129,19 +129,21 @@ button:not(:disabled):active,button:not(:disabled).touch-pressed{filter:brightne
 .top .title { margin: 0; min-width: 0; max-width: 100%; overflow-wrap: anywhere; }
 .top-actions { margin-left: auto; }
 .match-header { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1fr); min-height: 42px; border: 1px solid #d4e1f0; }
-.match-header .match-title { font-weight: 700; }
+.match-header .match-title { font-weight: 700; font-size: clamp(14px, 3.5vw, 17px); }
 .match-header .match-camera { padding: 3px 6px; text-align: center; color: #1a4579; }
-.match-header .match-title, .match-header .match-camera { font-size: clamp(12px, 3vw, 15px); }
-.match-date { display: flex; justify-content: center; gap: 8px; font-size: 14px; font-weight: 700; margin: 12px 0; }
+.match-header .match-camera { font-size: clamp(12px, 3vw, 15px); }
+.match-date { display: flex; align-items: baseline; justify-content: center; gap: 8px; font-size: 14px; font-weight: 700; margin: 12px 0; }
 #local-clock { font-variant-numeric: tabular-nums; }
-.clock { font-size: clamp(24px, 5vw, 31px); line-height: 1.25; color: #2873ba; }
-.match-clock { border: 1px solid #a8bdd2; }
+.clock { font-size: clamp(30px, 6vw, 36px); line-height: 1.25; color: #08665f; }
+.match-clock { border: 1px solid #a8bdd2; padding-block: 16px; }
+.match-clock .muted, .match-clock .pill { font-size: 14px; }
+.record-meta { font-weight: 700; }
 .scorebox .pill { width: auto; display: inline-flex; gap: 5px; padding: 0 9px; margin-top: 5px; }
 .scorebox .recording-pill { color: #2563eb; font-weight: 800; }
 .totals { display: grid; grid-template-columns: 1fr 1fr 1.4fr; gap: 6px; margin-top: 18px; }
 .totals span { padding: 11px 3px; background: #edf4fd; border-radius: 8px; text-align: center; font-size: 12px; }
 .totals b { display: block; margin-top: 3px; font-size: clamp(14px, 3vw, 19px); font-variant-numeric: tabular-nums; }
-.btn.full.finish-first[data-action="end"] { margin-top: 16px; min-height: 44px; padding: 9px 12px; border-color: #a8bdd2; background: #fff; color: #33475f; font-size: 14px; font-weight: 650; }
+.btn.full.finish-first[data-action="end"] { margin-top: 16px; min-height: 44px; padding: 9px 12px; border-color: #e7c8cb; background: #fff3f4; color: #33475f; font-size: 14px; font-weight: 650; }
 .event.record { grid-template-columns: max-content minmax(0, 1fr); column-gap: 8px; font-size: 14px; padding: 6px; border: 1px solid #dce1e6; }
 .event.record.event-editable { grid-template-columns: max-content minmax(0, 1fr) 46px; }
 .event ~ .event { margin-top: 6px; }
@@ -362,7 +364,7 @@ function history() {
 
 function detail(record) {
   return '<div class="detail-nav">'+btn('history','← 목록','btn nav-large')+btn('home','⌂ 홈','btn nav-large')+'</div>'
-    +'<div class="scorebox"><b>'+escape(record.match)+'</b><div class="muted">'+(record.name ? escape(record.name)+' · ' : '')+dayLabel(record.firstStart.local)+'</div></div>'
+    +'<div class="scorebox"><b>'+escape(record.match)+'</b><div class="muted record-meta">'+(record.name ? escape(record.name)+' · ' : '')+dayLabel(record.firstStart.local)+'</div></div>'
     +totals(record)+timeline(record)+'<div class="rowbtn">'+btn('edit','✎ 수정')+btn('xlsx','↓ 경기 기록 저장')+'</div>'
     +btn('delete','이 경기 기록 삭제','btn full danger');
 }
