@@ -128,7 +128,7 @@ button:not(:disabled):active,button:not(:disabled).touch-pressed{filter:brightne
 .top { flex-wrap: wrap; }
 .top .title { margin: 0; min-width: 0; max-width: 100%; overflow-wrap: anywhere; }
 .top-actions { margin-left: auto; }
-.match-header { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1fr); min-height: 42px; border: 1px solid #d4e1f0; }
+.match-header { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1fr); min-height: 42px; padding-block: 5px; border: 1px solid #d4e1f0; }
 .match-header .match-title { font-weight: 700; font-size: clamp(14px, 3.5vw, 17px); }
 .match-header .match-camera { padding: 3px 6px; text-align: center; color: #1a4579; }
 .match-name-field { position: relative; min-width: 0; }
@@ -142,7 +142,8 @@ button:not(:disabled):active,button:not(:disabled).touch-pressed{filter:brightne
   pointer-events: none;
 }
 .match-header .match-camera { position: relative; display: block; border: 0; background: transparent; font-size: 16px; font-weight: 700; min-height: 44px; }
-.match-edit-hint { display: flex; min-height: 44px; align-items: center; justify-content: flex-end; font-size: 11px; color: #425b79; cursor: text; }
+.match-edit-hint { display: flex; min-height: 44px; align-items: center; justify-content: flex-end; gap: 3px; font-size: 11px; color: #425b79; cursor: text; }
+.match-edit-icon { color: #253448; font-weight: 700; }
 .match-date { display: flex; align-items: baseline; justify-content: center; gap: 8px; font-size: 14px; font-weight: 700; margin: 12px 0; }
 #local-clock { font-variant-numeric: tabular-nums; }
 .clock { font-size: clamp(30px, 6vw, 36px); line-height: 1.25; color: #08665f; }
@@ -349,7 +350,7 @@ function home() {
       +btn('next','새 기록 준비','btn primary full next-ready-pulse')+'</div>'
   };
   return '<div class="match-header"><label class="match-title" for="home-match">경기 정보</label>'
-    +'<div class="match-name-field"><input class="match-camera" id="home-match" type="text" maxlength="120" placeholder="연습경기" value="'+escape(record?.match ?? state.match)+'"></div><label class="match-edit-hint" for="home-match" aria-hidden="true">✎ 수정 가능</label></div>'
+    +'<div class="match-name-field"><input class="match-camera" id="home-match" type="text" maxlength="120" placeholder="연습경기" value="'+escape(record?.match ?? state.match)+'"></div><label class="match-edit-hint" for="home-match" aria-hidden="true"><span class="match-edit-icon">✎</span>수정 가능</label></div>'
     +'<div class="match-date"><span id="match-date">'+dayLabel(now)+'</span><time id="local-clock" aria-label="현재 시각">'+now.slice(11)+'</time></div>'
     +'<div class="scorebox match-clock"><div class="muted">현재 경기 시간</div><div id="clock" class="clock">'+duration(lengths(record).total)+'</div>'
     +'<div class="pill '+(running?'recording-pill':'')+'">'+(running?'<span class="recording-dot" aria-hidden="true"></span>':'')+'<span>'+statusText[status]+'</span></div></div>'
